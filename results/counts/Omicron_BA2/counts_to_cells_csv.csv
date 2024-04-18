@@ -1,0 +1,5 @@
+sample_lib,date,experiment,antibody,concentration,sort_bin,number_cells,counts,counts:cells,is_reference
+"exptREF3-none-0-ref, lib24",230714,exptREF3,none,0,ref,,4.44e+07,,True
+"exptREF3-none-0-ref, lib25",230714,exptREF3,none,0,ref,,4.91e+07,,True
+"expt7-C68_490-53-abneg, lib24",230714,expt7,C68_490,53,abneg,4e+05,5.88e+06,14.7,False
+"expt7-C68_490-53-abneg, lib25",230714,expt7,C68_490,53,abneg,4e+05,2.14e+06,5.36,False
