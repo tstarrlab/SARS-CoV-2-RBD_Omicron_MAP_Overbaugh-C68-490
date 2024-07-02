@@ -8,9 +8,13 @@ seqdata_source: local
 
 # list of Illumina sequencing runs of barcodes
 barcode_runs_Omicron_BA2: data/barcode_runs_Omicron_BA2.csv
+barcode_runs_Wuhan_Hu_1: data/barcode_runs_Wuhan_Hu_1.csv
+barcode_runs_SARS1: data/barcode_runs_SARS1.csv
 
 # table of barcode-variant lookups for different libraries
 bc_variant_lookup_Omicron_BA2: data/codon_variant_table_Omicron_BA2.csv
+bc_variant_lookup_Wuhan_Hu_1: data/codon_variant_table_Wuhan_Hu_1.csv
+bc_variant_lookup_SARS1: data/codon_variant_table_SARS1.csv
 
 # sequencing counts to cells ratio should exceed this for escape samples
 min_counts_to_cells_ratio: 2.5
@@ -19,10 +23,14 @@ reference_min_counts: 2.5e+7
 
 # wildtype sequence of mutagenized gene
 wildtype_sequence_Omicron_BA2: data/wildtype_sequence_Omicron_BA2.fasta
+wildtype_sequence_Wuhan_Hu_1: data/wildtype_sequence_Wuhan_Hu_1.fasta
+wildtype_sequence_SARS1: data/wildtype_sequence_SARS1.fasta
+
 site_number_offset: 330  # add this to sequential sites to get RBD numbering
 
 # URLs from which we download binding & expression of mutants & variants
 mut_bind_expr_url: https://media.githubusercontent.com/media/jbloomlab/SARS-CoV-2-RBD_DMS_Omicron/main/results/final_variant_scores/final_variant_scores.csv
+mut_bind_expr_url_SARSr: https://raw.githubusercontent.com/tstarrlab/SARSr-CoV-RBD_DMS/main/results/final_variant_scores/final_variant_scores_lib40_41.csv
 early2020_mut_bind_expr_url: https://media.githubusercontent.com/media/jbloomlab/SARS-CoV-2-RBD_DMS/master/results/single_mut_effects/single_mut_effects.csv
 
 
@@ -59,6 +67,10 @@ escape_score_precount_filter: 100
 # <= these values
 escape_score_min_bind_mut_Omicron_BA2: -2.0
 escape_score_min_expr_mut_Omicron_BA2: -0.95489
+escape_score_min_bind_mut_Wuhan_Hu_1: -2.0
+escape_score_min_expr_mut_Wuhan_Hu_1: -0.95489
+escape_score_min_bind_mut_SARS1: -2.0
+escape_score_min_expr_mut_SARS1: -0.95489
 # should we just exclude all mutations to sites where the WT is a cysteine?
 exclude_cysteines: True
 # Only retain mutation-level escape fraction estimates when there are
@@ -102,6 +114,9 @@ site_metric: site_total_escape_frac_single_mut
 mut_metric: mut_escape_frac_single_mut
 # Specify how to plot escape profiles
 escape_profiles_config_Omicron_BA2: data/escape_profiles_config_Omicron_BA2.yaml
+escape_profiles_config_Wuhan_Hu_1: data/escape_profiles_config_Wuhan_Hu_1.yaml
+escape_profiles_config_SARS1: data/escape_profiles_config_SARS1.yaml
+
 # Site color schemes for escape profiles
 site_color_schemes: data/site_color_schemes.csv
 # Set default y-axis max for escape profiles. The y-axis ymax is
@@ -125,31 +140,61 @@ figs_dir: results/figures
 
 #downloaded prior dms measures
 mut_bind_expr: results/prior_DMS_data/mutant_ACE2binding_expression.csv
+mut_bind_expr_SARSr: results/prior_DMS_data/mutant_ACE2binding_expression_SARSr.csv
 early2020_mut_bind_expr: results/prior_DMS_data/early2020_mutant_ACE2binding_expression.csv
 
 #output dirs and files for current analyses
 counts_dir_Omicron_BA2: results/counts/Omicron_BA2
+counts_dir_Wuhan_Hu_1: results/counts/Wuhan_Hu_1
+counts_dir_SARS1: results/counts/SARS1
+
 
 variant_counts_Omicron_BA2: results/counts/Omicron_BA2/variant_counts.csv.gz
+variant_counts_Wuhan_Hu_1: results/counts/Wuhan_Hu_1/variant_counts.csv.gz
+variant_counts_SARS1: results/counts/SARS1/variant_counts.csv.gz
 
 counts_to_cells_csv_Omicron_BA2: results/counts/Omicron_BA2/counts_to_cells_csv.csv
+counts_to_cells_csv_Wuhan_Hu_1: results/counts/Wuhan_Hu_1/counts_to_cells_csv.csv
+counts_to_cells_csv_SARS1: results/counts/SARS1/counts_to_cells_csv.csv
+
 
 escape_scores_dir: results/escape_scores
 
 escape_score_samples_Omicron_BA2: results/escape_scores/samples_Omicron_BA2.csv
+escape_score_samples_Wuhan_Hu_1: results/escape_scores/samples_Wuhan_Hu_1.csv
+escape_score_samples_SARS1: results/escape_scores/samples_SARS1.csv
+
 
 escape_scores_Omicron_BA2: results/escape_scores/scores_Omicron_BA2.csv
+escape_scores_Wuhan_Hu_1: results/escape_scores/scores_Wuhan_Hu_1.csv
+escape_scores_SARS1: results/escape_scores/scores_SARS1.csv
+
 
 escape_fracs_Omicron_BA2: results/escape_scores/escape_fracs_Omicron_BA2.csv
+escape_fracs_Wuhan_Hu_1: results/escape_scores/escape_fracs_Wuhan_Hu_1.csv
+escape_fracs_SARS1: results/escape_scores/escape_fracs_SARS1.csv
+
 
 escape_profiles_dms_colors_Omicron_BA2: results/escape_profiles/Omicron_BA2/escape_profiles_dms_colors.csv
+escape_profiles_dms_colors_Wuhan_Hu_1: results/escape_profiles/Wuhan_Hu_1/escape_profiles_dms_colors.csv
+escape_profiles_dms_colors_SARS1: results/escape_profiles/SARS1/escape_profiles_dms_colors.csv
 
 escape_profiles_dir_Omicron_BA2: results/escape_profiles/Omicron_BA2
+escape_profiles_dir_Wuhan_Hu_1: results/escape_profiles/Wuhan_Hu_1
+escape_profiles_dir_SARS1: results/escape_profiles/SARS1
 
 strong_escape_sites_Omicron_BA2: results/escape_profiles/strong_escape_sites_Omicron_BA2.csv
+strong_escape_sites_Wuhan_Hu_1: results/escape_profiles/strong_escape_sites_Wuhan_Hu_1.csv
+strong_escape_sites_SARS1: results/escape_profiles/strong_escape_sites_SARS1.csv
 
 pdb_outputs_dir_Omicron_BA2: results/pdb_outputs/Omicron_BA2
+pdb_outputs_dir_Wuhan_Hu_1: results/pdb_outputs/Wuhan_Hu_1
+pdb_outputs_dir_SARS1: results/pdb_outputs/SARS1
 
 supp_data_dir_Omicron_BA2: results/supp_data/Omicron_BA2
+supp_data_dir_Wuhan_Hu_1: results/supp_data/Wuhan_Hu_1
+supp_data_dir_SARS1: results/supp_data/SARS1
 
 bind_expr_filters_dir_Omicron_BA2: results/bind_expr_filters/Omicron_BA2
+bind_expr_filters_dir_Wuhan_Hu_1: results/bind_expr_filters/Wuhan_Hu_1
+bind_expr_filters_dir_SARS1: results/bind_expr_filters/SARS1
