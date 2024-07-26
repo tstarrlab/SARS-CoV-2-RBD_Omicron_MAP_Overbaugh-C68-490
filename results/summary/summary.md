@@ -1,44 +1,56 @@
 # Summary
 
-Analysis run by [Snakefile](../../Snakefile)
-using [this config file](../../config.yaml).
-See the [README in the top directory](../../README.md)
-for details.
+  Analysis run by [Snakefile](../../Snakefile)
+  using [this config file](../../config.yaml).
+  See the [README in the top directory](../../README.md)
+  for details.
 
-Here is the rule graph of the computational workflow:
-![rulegraph.svg](rulegraph.svg)
+  Here is the rule graph of the computational workflow:
+  ![rulegraph.svg](rulegraph.svg)
 
-Here is the Markdown output of each notebook in the workflow:
+  Here is the Markdown output of each notebook in the workflow:
 
-1. Get prior RBD DMS mutation-level binding and expression measurements and barcode-variant lookup table from the [SARS-CoV-2-RBD_DMS_Omicron repository](https://github.com/jbloomlab/SARS-CoV-2-RBD_DMS_Omicron) and the original DMS library for SARS-CoV-2 (PCR-based mutagenesis) [here](https://github.com/jbloomlab/SARS-CoV-2-RBD_DMS). 
+  1. Get prior RBD DMS mutation-level binding and expression measurements and barcode-variant lookup table from the [SARS-CoV-2-RBD_DMS_Omicron repository](https://github.com/jbloomlab/SARS-CoV-2-RBD_DMS_Omicron) and the original DMS library for SARS-CoV-2 (PCR-based mutagenesis) [here](https://github.com/jbloomlab/SARS-CoV-2-RBD_DMS), and the SARS-CoV-1 data from [this repository](https://github.com/tstarrlab/SARSr-CoV-RBD_DMS). 
 
-2. Count variants and then aggregate counts for
-   [Omicron_BA2](aggregate_variant_counts_Omicron_BA2.md)
-   to create variant counts files for
-   [Omicron_BA2](../counts/Omicron_BA2/variant_counts.csv.gz).
+  2. Count variants and then aggregate counts for
+     [Wuhan_Hu_1](aggregate_variant_counts_Wuhan_Hu_1.md), 
+     [Omicron_BA2](aggregate_variant_counts_Omicron_BA2.md), and
+     [SARS1](aggregate_variant_counts_SARS1.md)
+     to create variant counts files for [Wuhan_Hu_1](../counts/Wuhan_Hu_1/variant_counts.csv.gz), 
+     [Omicron_BA2](../counts/Omicron_BA2/variant_counts.csv.gz), and
+     [SARS1](../counts/SARS1/variant_counts.csv.gz).
 
-3. Analyze sequencing counts to cells ratio for 
-   [Omicron_BA2](counts_to_cells_ratio_Omicron_BA2.md)
-   this prints a list of any samples where this ratio too low. Also
-   creates a CSV for 
-   [Omicron_BA2](../counts/Omicron_BA2/counts_to_cells_csv.csv) with the
-   sequencing counts, number of sorted cells, and ratios for
-   all samples.
+  3. Analyze sequencing counts to cells ratio for [Wuhan_Hu_1](counts_to_cells_ratio_Wuhan_Hu_1.md), 
+     [Omicron_BA2](counts_to_cells_ratio_Omicron_BA2.md) and 
+     [SARS1](counts_to_cells_ratio_SARS1.md).
+     this prints a list of any samples where this ratio too low. Also
+     creates a CSV for [Wuhan_Hu_1](../counts/Wuhan_Hu_1/counts_to_cells_csv.csv), 
+     [Omicron_BA2](../counts/Omicron_BA2/counts_to_cells_csv.csv) and 
+     [SARS1](../counts/SARS1/counts_to_cells_csv.csv) with the
+     sequencing counts, number of sorted cells, and ratios for
+     all samples.
 
-4. Calculate escape scores from variant counts for 
-   [Omicron_BA2](counts_to_scores_Omicron_BA2.md).
+  4. Calculate escape scores from variant counts for [Wuhan_Hu_1](counts_to_scores_Wuhan_Hu_1.md), 
+     [Omicron_BA2](counts_to_scores_Omicron_BA2.md) and 
+     [SARS1](counts_to_scores_SARS1.md).
 
-5. Call sites of strong escape for
-   [Omicron_BA2](call_strong_escape_sites_Omicron_BA2.md).
+  5. Call sites of strong escape for [Wuhan_Hu_1](call_strong_escape_sites_Wuhan_Hu_1.md), 
+     [Omicron_BA2](call_strong_escape_sites_Omicron_BA2.md) and 
+     [SARS1](call_strong_escape_sites_SARS1.md).
 
-6. Plot escape profiles for 
-   [Omicron_BA2](escape_profiles_Omicron_BA2.md).
+  6. Plot escape profiles for [Wuhan_Hu_1](escape_profiles_Wuhan_Hu_1.md), 
+     [Omicron_BA2](escape_profiles_Omicron_BA2.md) and 
+     [SARS1](escape_profiles_SARS1.md).
 
-7. Map escape profiles to ``*.pdb`` files using notebooks here for 
-   [Omicron_BA2](output_pdbs_Omicron_BA2.md).
+  7. Map escape profiles to ``*.pdb`` files using notebooks here for 
+     [Wuhan_Hu_1](output_pdbs_Wuhan_Hu_1.md), 
+     [Omicron_BA2](output_pdbs_Omicron_BA2.md) and 
+     [SARS1](output_pdbs_SARS1.md).
 
-8. Make supplementary data files for 
-   [Omicron_BA2](make_supp_data_Omicron_BA2.md),
-   which are here for
-   [Omicron_BA2](../supp_data/Omicron_BA2). These include
-   `dms-view` input files.
+8. Make supplementary data files for [Wuhan_Hu_1](make_supp_data_Wuhan_Hu_1.md), 
+     [Omicron_BA2](make_supp_data_Omicron_BA2.md) and 
+     [SARS1](make_supp_data_SARS1.md),
+     which are here for [Wuhan_Hu_1](../supp_data/Wuhan_Hu_1), 
+     [Omicron_BA2](../supp_data/Omicron_BA2) and 
+     [SARS1](../supp_data/SARS1). These include
+     `dms-view` input files.
