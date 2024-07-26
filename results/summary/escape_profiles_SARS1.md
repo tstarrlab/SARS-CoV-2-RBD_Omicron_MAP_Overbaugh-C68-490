@@ -1,4 +1,4 @@
-# Plot escape profiles for Wuhan_Hu_1 background MAP
+# Plot escape profiles for SARS1 background MAP
 This Python Jupyter notebook plots escape profiles for antibodies and sera.
 
 ## Import and read configuration / data
@@ -34,6 +34,8 @@ from plotnine import *
 import pdb_prot_align.colorschemes
 
 import yaml
+
+%matplotlib inline
 ```
 
 Versions of key software:
@@ -60,7 +62,7 @@ Create output directory:
 
 
 ```python
-os.makedirs(config['escape_profiles_dir_Wuhan_Hu_1'], exist_ok=True)
+os.makedirs(config['escape_profiles_dir_SARS1'], exist_ok=True)
 ```
 
 Extract from configuration what we will use as the site- and mutation-level metrics:
@@ -83,12 +85,12 @@ These auto-identified sites are what we plot by default for each escape profile:
 
 
 ```python
-print(f"Reading sites of strong escape from {config['strong_escape_sites_Wuhan_Hu_1']}")
+print(f"Reading sites of strong escape from {config['strong_escape_sites_SARS1']}")
 
-strong_escape_sites = pd.read_csv(config['strong_escape_sites_Wuhan_Hu_1'])
+strong_escape_sites = pd.read_csv(config['strong_escape_sites_SARS1'])
 ```
 
-    Reading sites of strong escape from results/escape_profiles/strong_escape_sites_Wuhan_Hu_1.csv
+    Reading sites of strong escape from results/escape_profiles/strong_escape_sites_SARS1.csv
 
 
 ## Read and pad escape fractions data frame
@@ -98,8 +100,8 @@ Also, we work in the full-Spike rather than RBD numbering, which means we use `l
 
 
 ```python
-print(f"Reading escape fractions from {config['escape_fracs_Wuhan_Hu_1']}")
-escape_fracs = (pd.read_csv(config['escape_fracs_Wuhan_Hu_1'])
+print(f"Reading escape fractions from {config['escape_fracs_SARS1']}")
+escape_fracs = (pd.read_csv(config['escape_fracs_SARS1'])
                 .query('library == "average"')
                 .drop(columns=['site', 'selection', 'library'])
                 .rename(columns={'label_site': 'site'})
@@ -108,7 +110,7 @@ print('First few lines of escape-fraction data frame with sample-information add
 display(HTML(escape_fracs.head().to_html(index=False)))
 ```
 
-    Reading escape fractions from results/escape_scores/escape_fracs_Wuhan_Hu_1.csv
+    Reading escape fractions from results/escape_scores/escape_fracs_SARS1.csv
     First few lines of escape-fraction data frame with sample-information added:
 
 
@@ -131,69 +133,69 @@ display(HTML(escape_fracs.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>331</td>
       <td>N</td>
       <td>A</td>
       <td>E</td>
       <td>331</td>
-      <td>0.000337</td>
-      <td>0.03749</td>
-      <td>0.002343</td>
-      <td>1</td>
+      <td>0.001460</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
       <td>2</td>
+      <td>15</td>
     </tr>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>331</td>
       <td>N</td>
       <td>C</td>
       <td>E</td>
       <td>331</td>
-      <td>0.007544</td>
-      <td>0.03749</td>
-      <td>0.002343</td>
-      <td>1</td>
-      <td>4</td>
+      <td>0.002403</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
+      <td>2</td>
+      <td>13</td>
     </tr>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>331</td>
       <td>N</td>
       <td>D</td>
       <td>E</td>
       <td>331</td>
-      <td>0.000924</td>
-      <td>0.03749</td>
-      <td>0.002343</td>
+      <td>0.000891</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
       <td>2</td>
-      <td>5</td>
+      <td>24</td>
     </tr>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>331</td>
       <td>N</td>
       <td>E</td>
       <td>E</td>
       <td>331</td>
-      <td>0.001241</td>
-      <td>0.03749</td>
-      <td>0.002343</td>
+      <td>0.001231</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
       <td>2</td>
-      <td>6</td>
+      <td>16</td>
     </tr>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>331</td>
       <td>N</td>
       <td>F</td>
       <td>E</td>
       <td>331</td>
-      <td>0.004169</td>
-      <td>0.03749</td>
-      <td>0.002343</td>
-      <td>1</td>
-      <td>4</td>
+      <td>0.001124</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
+      <td>2</td>
+      <td>12</td>
     </tr>
   </tbody>
 </table>
@@ -201,6 +203,122 @@ display(HTML(escape_fracs.head().to_html(index=False)))
 
 Some sites / mutations are totally missing in the `escape_fracs` data frame.
 For plotting with `dmslogo`, we need to pad these missing sites to be zero:
+
+
+```python
+escape_fracs.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>condition</th>
+      <th>site</th>
+      <th>wildtype</th>
+      <th>mutation</th>
+      <th>protein_chain</th>
+      <th>protein_site</th>
+      <th>mut_escape_frac_single_mut</th>
+      <th>site_total_escape_frac_single_mut</th>
+      <th>site_avg_escape_frac_single_mut</th>
+      <th>nlibs</th>
+      <th>n_single_mut_measurements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>C68_490_27</td>
+      <td>331</td>
+      <td>N</td>
+      <td>A</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.001460</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
+      <td>2</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>C68_490_27</td>
+      <td>331</td>
+      <td>N</td>
+      <td>C</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.002403</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
+      <td>2</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C68_490_27</td>
+      <td>331</td>
+      <td>N</td>
+      <td>D</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.000891</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
+      <td>2</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>C68_490_27</td>
+      <td>331</td>
+      <td>N</td>
+      <td>E</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.001231</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
+      <td>2</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>C68_490_27</td>
+      <td>331</td>
+      <td>N</td>
+      <td>F</td>
+      <td>E</td>
+      <td>331</td>
+      <td>0.001124</td>
+      <td>0.02565</td>
+      <td>0.00135</td>
+      <td>2</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -214,8 +332,10 @@ pad_df = pd.concat([pd.DataFrame({'condition': condition,
                     for condition in escape_fracs['condition'].unique()
                     for site in range(first_site, last_site + 1)])
 
-# need to read in wildtype and map site to wildtype
-wt_prot = str(Bio.SeqIO.read(config['wildtype_sequence_Wuhan_Hu_1'], 'fasta').seq.translate())
+# need to read in wildtype and map site to wildtype, including adding the gap at position 152 (=482)
+wt_prot_wo_gap = str(Bio.SeqIO.read(config['wildtype_sequence_SARS1'], 'fasta').seq.translate())
+wt_prot = wt_prot_wo_gap[:151] + '-' + wt_prot_wo_gap[151:]
+
 assert len(wt_prot) == last_site - first_site + 1
 site_to_wt = {site: wt_prot[site - first_site] for site in range(first_site, last_site + 1)}
 for site, wt in escape_fracs.set_index('site')['wildtype'].to_dict().items():
@@ -243,7 +363,7 @@ Importantly, **note that as long as `clip_vals_gt_0` is set to `True`, then all 
 
 
 ```python
-mut_bind_expr_file = config['mut_bind_expr']
+mut_bind_expr_file = config['mut_bind_expr_SARSr']
 
 clip_vals_gt_0 = True  # plot DMS values > 0 as 0 (grouping beneficial and neutral)
 
@@ -252,12 +372,16 @@ print(f"Reading DMS data from {mut_bind_expr_file}")
 # read DMS data flagging mutations with escape > 0
 mut_bind_expr = (
     pd.read_csv(mut_bind_expr_file)
-    .query("target == 'Wuhan-Hu-1_v2'")
-    [['position', 'mutant', 'delta_bind', 'delta_expr']]
-    .rename(columns={'position': 'site',
+    .query("target == 'SARS-CoV-1_Urbani'")
+    [['site_SARS2', 'mutant', 'huACE2_delta', 'expression_delta']]
+    .rename(columns={'site_SARS2': 'site',
                      'mutant': 'mutation',
-                     'delta_bind': 'bind',
-                     'delta_expr': 'expr'})
+                     'huACE2_delta': 'bind',
+                     'expression_delta': 'expr'})
+    .assign(site=lambda x: pd.to_numeric(x['site'], errors='coerce'))
+    .dropna(subset=['site'])
+    .assign(site=lambda x: x['site'].astype(int))
+    
     # flag mutations with mutation escape > 0
     .merge(escape_fracs_padded, how='right', validate='one_to_many', on=['site', 'mutation'])
     .assign(escape_gt_0=lambda x: x[mut_metric] > 0)
@@ -266,6 +390,7 @@ mut_bind_expr = (
     .reset_index()
     .drop_duplicates()
     )
+
 
 # add color for each mutation, coloring those without escape > 0 as white
 for prop in ['bind', 'expr']:
@@ -288,7 +413,7 @@ for prop in ['bind', 'expr']:
                     cmap=cmap,
                     )
     for orientation in ['horizontal', 'vertical']:
-        scalebar_file = os.path.join(config['escape_profiles_dir_Wuhan_Hu_1'], f"{prop}_scalebar_{orientation}.pdf")
+        scalebar_file = os.path.join(config['escape_profiles_dir_SARS1'], f"{prop}_scalebar_{orientation}.pdf")
         print(f"\n{prop} ranges from {min_prop} to {max_prop}, here is the scale bar, which is being saved to {scalebar_file}")
         fig, _ = colormap.scale_bar(orientation=orientation,
                                     label={'bind': 'ACE2 binding',
@@ -303,11 +428,11 @@ for prop in ['bind', 'expr']:
                                                          axis=1)
     
     # save to file the color scheme
-    print(f"Saving DMS color scheme to {config['escape_profiles_dms_colors_Wuhan_Hu_1']}")
+    print(f"Saving DMS color scheme to {config['escape_profiles_dms_colors_SARS1']}")
     (mut_bind_expr
      .query('escape_gt_0')
      .drop(columns='escape_gt_0')
-     .to_csv(config['escape_profiles_dms_colors_Wuhan_Hu_1'], index=False)
+     .to_csv(config['escape_profiles_dms_colors_SARS1'], index=False)
      )
     
 # add DMS coloring to escape fractions data frame
@@ -333,55 +458,55 @@ if len(nan_color):
     raise ValueError(f"The following entries lack colors:\n{nan_color}")
 ```
 
-    Reading DMS data from results/prior_DMS_data/mutant_ACE2binding_expression.csv
+    Reading DMS data from results/prior_DMS_data/mutant_ACE2binding_expression_SARSr.csv
     
-    bind ranges from -1.99385 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Wuhan_Hu_1/bind_scalebar_horizontal.pdf
+    bind ranges from -1.95885 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/bind_scalebar_horizontal.pdf
 
 
-    /scratch/local/u1415613/1332293/ipykernel_2286584/578489049.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
-
-
-
-    
-![png](escape_profiles_Wuhan_Hu_1_files/escape_profiles_Wuhan_Hu_1_18_2.png)
-    
-
-
-    
-    bind ranges from -1.99385 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Wuhan_Hu_1/bind_scalebar_vertical.pdf
+    /scratch/local/u1415613/1332292/ipykernel_800015/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
 
 
 
     
-![png](escape_profiles_Wuhan_Hu_1_files/escape_profiles_Wuhan_Hu_1_18_4.png)
-    
-
-
-    Saving DMS color scheme to results/escape_profiles/Wuhan_Hu_1/escape_profiles_dms_colors.csv
-    
-    expr ranges from -0.95352 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Wuhan_Hu_1/expr_scalebar_horizontal.pdf
-
-
-    /scratch/local/u1415613/1332293/ipykernel_2286584/578489049.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
-
-
-
-    
-![png](escape_profiles_Wuhan_Hu_1_files/escape_profiles_Wuhan_Hu_1_18_7.png)
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_19_2.png)
     
 
 
     
-    expr ranges from -0.95352 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Wuhan_Hu_1/expr_scalebar_vertical.pdf
+    bind ranges from -1.95885 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/bind_scalebar_vertical.pdf
 
 
 
     
-![png](escape_profiles_Wuhan_Hu_1_files/escape_profiles_Wuhan_Hu_1_18_9.png)
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_19_4.png)
     
 
 
-    Saving DMS color scheme to results/escape_profiles/Wuhan_Hu_1/escape_profiles_dms_colors.csv
+    Saving DMS color scheme to results/escape_profiles/SARS1/escape_profiles_dms_colors.csv
+    
+    expr ranges from -0.95363 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/expr_scalebar_horizontal.pdf
+
+
+    /scratch/local/u1415613/1332292/ipykernel_800015/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+
+
+
+    
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_19_7.png)
+    
+
+
+    
+    expr ranges from -0.95363 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/expr_scalebar_vertical.pdf
+
+
+
+    
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_19_9.png)
+    
+
+
+    Saving DMS color scheme to results/escape_profiles/SARS1/escape_profiles_dms_colors.csv
 
 
 ## Plot specified escape profiles
@@ -389,15 +514,15 @@ We have manually specified configurations for escape profiles in a YAML file:
 
 
 ```python
-print(f"Reading escape-profile configuration from {config['escape_profiles_config_Wuhan_Hu_1']}")
-with open(config['escape_profiles_config_Wuhan_Hu_1']) as f:
+print(f"Reading escape-profile configuration from {config['escape_profiles_config_SARS1']}")
+with open(config['escape_profiles_config_SARS1']) as f:
     escape_profiles_config = yaml.safe_load(f)
     
 print(f"Reading the site color schemes from {config['site_color_schemes']}")
 site_color_schemes = pd.read_csv(config['site_color_schemes'])
 ```
 
-    Reading escape-profile configuration from data/escape_profiles_config_Wuhan_Hu_1.yaml
+    Reading escape-profile configuration from data/escape_profiles_config_SARS1.yaml
     Reading the site color schemes from data/site_color_schemes.csv
 
 
@@ -611,7 +736,7 @@ for name, specs in escape_profiles_config.items():
         ylims_nopad = dmslogo_facet_plot_kwags['set_ylims']
         
     # write the ylimits
-    ylims_csv = os.path.join(config['escape_profiles_dir_Wuhan_Hu_1'], f"{name}_stackedlogo_ylims.csv")
+    ylims_csv = os.path.join(config['escape_profiles_dir_SARS1'], f"{name}_stackedlogo_ylims.csv")
     (
      pd.DataFrame.from_dict(ylims_nopad, orient='index', columns=['minimum', 'maximum'])
      .rename_axis('condition')
@@ -619,10 +744,10 @@ for name, specs in escape_profiles_config.items():
      )
         
     # draw plot for each color scheme
-    colors_plotfiles = [(color_col, os.path.join(config['escape_profiles_dir_Wuhan_Hu_1'], f"{name}_stackedlogo.pdf"))]
+    colors_plotfiles = [(color_col, os.path.join(config['escape_profiles_dir_SARS1'], f"{name}_stackedlogo.pdf"))]
     if 'color_by_dms' in specs and specs['color_by_dms']:
-        colors_plotfiles += [('bind_color', os.path.join(config['escape_profiles_dir_Wuhan_Hu_1'], f"{name}_color_by_bind_stackedlogo.pdf")),
-                             ('expr_color', os.path.join(config['escape_profiles_dir_Wuhan_Hu_1'], f"{name}_color_by_expr_stackedlogo.pdf"))]
+        colors_plotfiles += [('bind_color', os.path.join(config['escape_profiles_dir_SARS1'], f"{name}_color_by_bind_stackedlogo.pdf")),
+                             ('expr_color', os.path.join(config['escape_profiles_dir_SARS1'], f"{name}_color_by_expr_stackedlogo.pdf"))]
     for color, pdffile in colors_plotfiles:
         pngfile = os.path.splitext(pdffile)[0] + '.png'
         svgfile = os.path.splitext(pdffile)[0] + '.svg'
@@ -665,39 +790,44 @@ with multiprocessing.Pool(ncpus) as pool:
 
     
     Plotted profile 1 to:
-     results/escape_profiles/Wuhan_Hu_1/C68_490_WH1_stackedlogo.pdf
-     results/escape_profiles/Wuhan_Hu_1/C68_490_WH1_stackedlogo.png.
+     results/escape_profiles/SARS1/C68_490_SARS1_stackedlogo.pdf
+     results/escape_profiles/SARS1/C68_490_SARS1_stackedlogo.png.
 
 
 
     
-![png](escape_profiles_Wuhan_Hu_1_files/escape_profiles_Wuhan_Hu_1_26_3.png)
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_27_3.png)
     
 
 
     
     Plotted profile 2 to:
-     results/escape_profiles/Wuhan_Hu_1/C68_490_WH1_color_by_bind_stackedlogo.pdf
-     results/escape_profiles/Wuhan_Hu_1/C68_490_WH1_color_by_bind_stackedlogo.png.
+     results/escape_profiles/SARS1/C68_490_SARS1_color_by_bind_stackedlogo.pdf
+     results/escape_profiles/SARS1/C68_490_SARS1_color_by_bind_stackedlogo.png.
 
 
 
     
-![png](escape_profiles_Wuhan_Hu_1_files/escape_profiles_Wuhan_Hu_1_26_5.png)
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_27_5.png)
     
 
 
     
     Plotted profile 3 to:
-     results/escape_profiles/Wuhan_Hu_1/C68_490_WH1_color_by_expr_stackedlogo.pdf
-     results/escape_profiles/Wuhan_Hu_1/C68_490_WH1_color_by_expr_stackedlogo.png.
+     results/escape_profiles/SARS1/C68_490_SARS1_color_by_expr_stackedlogo.pdf
+     results/escape_profiles/SARS1/C68_490_SARS1_color_by_expr_stackedlogo.png.
 
 
 
     
-![png](escape_profiles_Wuhan_Hu_1_files/escape_profiles_Wuhan_Hu_1_26_7.png)
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_27_7.png)
     
 
+
+
+```python
+
+```
 
 
 ```python

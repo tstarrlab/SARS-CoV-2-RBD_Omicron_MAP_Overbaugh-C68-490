@@ -38,7 +38,7 @@ Create output directory:
 
 
 ```python
-os.makedirs(config['supp_data_dir_Wuhan_Hu_1'], exist_ok=True)
+os.makedirs(config['supp_data_dir_SARS1'], exist_ok=True)
 ```
 
 Extract from configuration what we will use as the site- and mutation-level metrics:
@@ -60,7 +60,7 @@ Read escape profiles configuration and get sets for which we will be making supp
 
 
 ```python
-with open (config['escape_profiles_config_Wuhan_Hu_1']) as f:
+with open (config['escape_profiles_config_SARS1']) as f:
     escape_profiles_config = yaml.safe_load(f)
     
 condition_sets = {name: specs['conditions'] for name, specs in escape_profiles_config.items()
@@ -77,11 +77,11 @@ Read the escape fractions
 
 
 ```python
-print(f"Reading escape fractions from {config['escape_fracs_Wuhan_Hu_1']}")
-escape_fracs_all = pd.read_csv(config['escape_fracs_Wuhan_Hu_1'])
+print(f"Reading escape fractions from {config['escape_fracs_SARS1']}")
+escape_fracs_all = pd.read_csv(config['escape_fracs_SARS1'])
 ```
 
-    Reading escape fractions from results/escape_scores/escape_fracs_Wuhan_Hu_1.csv
+    Reading escape fractions from results/escape_scores/escape_fracs_SARS1.csv
 
 
 Read the configuration about what data gets output on what PDBs:
@@ -179,7 +179,7 @@ for metric_type, (set_name, condition_set) in itertools.product(['mutation', 'si
 
     fig = p.draw()
     display(fig)
-    plotfile = os.path.join(config['supp_data_dir_Wuhan_Hu_1'],
+    plotfile = os.path.join(config['supp_data_dir_SARS1'],
                             f"{set_name}-{metric_type}-corr.pdf")
     print(f"Saving plot to {plotfile}")
     p.save(plotfile, verbose=False)
@@ -218,7 +218,7 @@ for set_name, condition_set in condition_sets.items():
           .rename(columns={'label_site': 'site'})
           )
     #display(HTML(df.head().to_html(index=False)))
-    csv_file = os.path.join(config['supp_data_dir_Wuhan_Hu_1'], f"{set_name}_raw_data.csv")
+    csv_file = os.path.join(config['supp_data_dir_SARS1'], f"{set_name}_raw_data.csv")
     print(f"Writing to {csv_file}")
     df.to_csv(csv_file, index=False, float_format='%.4g')
 ```
@@ -232,10 +232,10 @@ The first step is to read these color schemes:
 
 
 ```python
-print(f"Reading DMS color schemes from {config['escape_profiles_dms_colors_Wuhan_Hu_1']}")
+print(f"Reading DMS color schemes from {config['escape_profiles_dms_colors_SARS1']}")
 
 dms_colors = (
-    pd.read_csv(config['escape_profiles_dms_colors_Wuhan_Hu_1'])
+    pd.read_csv(config['escape_profiles_dms_colors_SARS1'])
     .drop(columns=['bind', 'expr'])
     .rename(columns={'site': 'label_site'})
     .rename(columns={'bind_color': 'color ACE2 bind',
@@ -246,7 +246,7 @@ dms_colors = (
     )
 ```
 
-    Reading DMS color schemes from results/escape_profiles/Wuhan_Hu_1/escape_profiles_dms_colors.csv
+    Reading DMS color schemes from results/escape_profiles/SARS1/escape_profiles_dms_colors.csv
 
 
 Now write a [dms-view](https://dms-view.github.io/docs/dataupload) input file that allows different mutation-level coloring schemes:
@@ -290,76 +290,76 @@ display(HTML(dms_view_df.head().to_html(index=False)))
   </thead>
   <tbody>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>1</td>
       <td>331</td>
       <td>N</td>
       <td>A</td>
       <td>331</td>
-      <td>0.000337</td>
-      <td>0.03749</td>
-      <td>0.007544</td>
+      <td>0.001460</td>
+      <td>0.02565</td>
+      <td>0.002514</td>
       <td>#662505</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>1</td>
       <td>331</td>
       <td>N</td>
       <td>C</td>
       <td>331</td>
-      <td>0.007544</td>
-      <td>0.03749</td>
-      <td>0.007544</td>
-      <td>#a13703</td>
+      <td>0.002403</td>
+      <td>0.02565</td>
+      <td>0.002514</td>
+      <td>#662505</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>1</td>
       <td>331</td>
       <td>N</td>
       <td>D</td>
       <td>331</td>
-      <td>0.000924</td>
-      <td>0.03749</td>
-      <td>0.007544</td>
+      <td>0.000891</td>
+      <td>0.02565</td>
+      <td>0.002514</td>
       <td>#662505</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>1</td>
       <td>331</td>
       <td>N</td>
       <td>E</td>
       <td>331</td>
-      <td>0.001241</td>
-      <td>0.03749</td>
-      <td>0.007544</td>
+      <td>0.001231</td>
+      <td>0.02565</td>
+      <td>0.002514</td>
       <td>#662505</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <td>C68_490_53</td>
+      <td>C68_490_27</td>
       <td>1</td>
       <td>331</td>
       <td>N</td>
       <td>F</td>
       <td>331</td>
-      <td>0.004169</td>
-      <td>0.03749</td>
-      <td>0.007544</td>
-      <td>#812d04</td>
+      <td>0.001124</td>
+      <td>0.02565</td>
+      <td>0.002514</td>
+      <td>#672505</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -398,7 +398,7 @@ for set_name, condition_set in condition_sets.items():
         chains = ' '.join(pdb_specs['chains'])
         df = df.assign(protein_chain=chains)[newcols]
    
-        csv_file = os.path.join(config['supp_data_dir_Wuhan_Hu_1'], f"{set_name}_{pdb_name}_dms-view_data.csv")
+        csv_file = os.path.join(config['supp_data_dir_SARS1'], f"{set_name}_{pdb_name}_dms-view_data.csv")
         print(f"Writing `dms-view` input file for {set_name} mapped to PDB {pdb_name} to {csv_file}")
         df.to_csv(csv_file, index=False, float_format='%.4g')
 ```
