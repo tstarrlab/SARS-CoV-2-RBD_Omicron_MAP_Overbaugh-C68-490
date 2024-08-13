@@ -64,11 +64,11 @@ display(HTML(new_filter_df.to_html(index=False)))
   <tbody>
     <tr>
       <td>delta_bind</td>
-      <td>-2.00000</td>
+      <td>-2.000</td>
     </tr>
     <tr>
       <td>delta_expr</td>
-      <td>-0.95489</td>
+      <td>-1.116</td>
     </tr>
   </tbody>
 </table>
@@ -563,7 +563,7 @@ for metric in ['bind', 'expr']:
 </table>
 
 
-    Mutations with >=50 GISAID counts but with expr score < -0.95489
+    Mutations with >=50 GISAID counts but with expr score < -1.116
 
 
 
@@ -593,30 +593,6 @@ for metric in ['bind', 'expr']:
       <td>0.000065</td>
       <td>delta_expr</td>
       <td>-1.28235</td>
-      <td>&gt;=50</td>
-    </tr>
-    <tr>
-      <td>L</td>
-      <td>L441F</td>
-      <td>441</td>
-      <td>F</td>
-      <td>54.0</td>
-      <td>10.0</td>
-      <td>0.000028</td>
-      <td>delta_expr</td>
-      <td>-1.00613</td>
-      <td>&gt;=50</td>
-    </tr>
-    <tr>
-      <td>S</td>
-      <td>S375F</td>
-      <td>375</td>
-      <td>F</td>
-      <td>124.0</td>
-      <td>15.0</td>
-      <td>0.000064</td>
-      <td>delta_expr</td>
-      <td>-0.99863</td>
       <td>&gt;=50</td>
     </tr>
   </tbody>
@@ -657,20 +633,16 @@ p.save(plotfile, verbose=False)
 ```
 
     Here are the scores for mutations to disulfide bonds:
-
-
-    /uufs/chpc.utah.edu/common/home/starr-group1/software/pkg/miniconda3/envs/StarrLab1/lib/python3.8/site-packages/plotnine/layer.py:333: PlotnineWarning: stat_bin : Removed 15 rows containing non-finite values.
-
-
     Saving plot to results/bind_expr_filters/Wuhan_Hu_1/disulfide-histogram.pdf
 
 
+    /uufs/chpc.utah.edu/common/home/starr-group1/software/pkg/miniconda3/envs/StarrLab1/lib/python3.8/site-packages/plotnine/layer.py:333: PlotnineWarning: stat_bin : Removed 15 rows containing non-finite values.
     /uufs/chpc.utah.edu/common/home/starr-group1/software/pkg/miniconda3/envs/StarrLab1/lib/python3.8/site-packages/plotnine/layer.py:333: PlotnineWarning: stat_bin : Removed 15 rows containing non-finite values.
 
 
 
     
-![png](bind_expr_filters_Wuhan_Hu_1_files/bind_expr_filters_Wuhan_Hu_1_18_4.png)
+![png](bind_expr_filters_Wuhan_Hu_1_files/bind_expr_filters_Wuhan_Hu_1_18_2.png)
     
 
 
@@ -961,10 +933,10 @@ print(f'Total number of possible mutations to non-disulfide sites: {total_muts_n
 
     WH1 SSM mutations that 
     pass bind: 3156 
-    pass expr: 2888 
-    pass both: 2608 
-    pass both and not disulfide: 2535
-    Pass bind, expr, not disulfide, and not WT: 2342
+    pass expr: 2984 
+    pass both: 2692 
+    pass both and not disulfide: 2614
+    Pass bind, expr, not disulfide, and not WT: 2421
     Total number of possible mutations to non-disulfide sites: 3633
 
 
@@ -996,8 +968,8 @@ print(round(100-stats.percentileofscore((dms_scores
 
     This percentage of all variants seen >=50x in GISAID are retained by the binding filter of -2.0
     100.0
-    This percentage of all variants seen >=50x in GISAID are retained by the expression filter of -0.95489
-    98.4
+    This percentage of all variants seen >=50x in GISAID are retained by the expression filter of -1.116
+    99.5
 
 
 

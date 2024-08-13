@@ -64,11 +64,11 @@ display(HTML(new_filter_df.to_html(index=False)))
   <tbody>
     <tr>
       <td>delta_bind</td>
-      <td>-2.00000</td>
+      <td>-2.00</td>
     </tr>
     <tr>
       <td>delta_expr</td>
-      <td>-0.95489</td>
+      <td>-1.25</td>
     </tr>
   </tbody>
 </table>
@@ -655,7 +655,7 @@ for metric in ['bind', 'expr']:
 </table>
 
 
-    Mutations with >=50 GISAID counts but with expr score < -0.95489
+    Mutations with >=50 GISAID counts but with expr score < -1.25
 
 
 
@@ -675,18 +675,6 @@ for metric in ['bind', 'expr']:
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>R</td>
-      <td>R408I</td>
-      <td>408</td>
-      <td>I</td>
-      <td>985.0</td>
-      <td>31.0</td>
-      <td>0.00051</td>
-      <td>delta_expr</td>
-      <td>-1.24496</td>
-      <td>&gt;=50</td>
-    </tr>
   </tbody>
 </table>
 
@@ -1021,10 +1009,10 @@ print(f'Total number of possible mutations to non-disulfide sites: {total_muts_n
 
     SARS1 SSM mutations that 
     pass bind: 3441 
-    pass expr: 3169 
-    pass both: 3052 
-    pass both and not disulfide: 2953
-    Pass bind, expr, not disulfide, and not WT: 2761
+    pass expr: 3287 
+    pass both: 3157 
+    pass both and not disulfide: 3043
+    Pass bind, expr, not disulfide, and not WT: 2851
     Total number of possible mutations to non-disulfide sites: 3633
 
 
@@ -1056,9 +1044,14 @@ print(round(100-stats.percentileofscore((dms_scores
 
     This percentage of all variants seen >=50x in GISAID are retained by the binding filter of -2.0
     nan
-    This percentage of all variants seen >=50x in GISAID are retained by the expression filter of -0.95489
+    This percentage of all variants seen >=50x in GISAID are retained by the expression filter of -1.25
     nan
 
+
+
+```python
+
+```
 
 
 ```python
