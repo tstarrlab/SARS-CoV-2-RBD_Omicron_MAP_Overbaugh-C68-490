@@ -68,9 +68,9 @@ escape_score_precount_filter: 100
 escape_score_min_bind_mut_Omicron_BA2: -2.0
 escape_score_min_expr_mut_Omicron_BA2: -0.95489
 escape_score_min_bind_mut_Wuhan_Hu_1: -2.0
-escape_score_min_expr_mut_Wuhan_Hu_1: -0.95489
+escape_score_min_expr_mut_Wuhan_Hu_1: -1.116
 escape_score_min_bind_mut_SARS1: -2.0
-escape_score_min_expr_mut_SARS1: -0.95489
+escape_score_min_expr_mut_SARS1: -1.25
 # should we just exclude all mutations to sites where the WT is a cysteine?
 exclude_cysteines: True
 # Only retain mutation-level escape fraction estimates when there are
