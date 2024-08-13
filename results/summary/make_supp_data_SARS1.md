@@ -70,7 +70,7 @@ print('Making supplementary data for the following condition sets:\n  ' + '\n  '
 ```
 
     Making supplementary data for the following condition sets:
-      
+      C68_490_SARS1
 
 
 Read the escape fractions
@@ -186,6 +186,30 @@ for metric_type, (set_name, condition_set) in itertools.product(['mutation', 'si
     plt.close(fig)
 ```
 
+    
+    Plotting correlations of mutation escape for C68_490_SARS1
+
+
+
+    
+![png](make_supp_data_SARS1_files/make_supp_data_SARS1_16_1.png)
+    
+
+
+    Saving plot to results/supp_data/SARS1/C68_490_SARS1-mutation-corr.pdf
+    
+    Plotting correlations of site escape for C68_490_SARS1
+
+
+
+    
+![png](make_supp_data_SARS1_files/make_supp_data_SARS1_16_3.png)
+    
+
+
+    Saving plot to results/supp_data/SARS1/C68_490_SARS1-site-corr.pdf
+
+
 ## Raw data files
 Get the "raw data" for the effects of each mutation on antibody escape.
 This has just the columns of most interest for the average of the two libraries, renamed in a sensible way:
@@ -222,6 +246,11 @@ for set_name, condition_set in condition_sets.items():
     print(f"Writing to {csv_file}")
     df.to_csv(csv_file, index=False, float_format='%.4g')
 ```
+
+    
+    Raw data for C68_490_SARS1:
+    Writing to results/supp_data/SARS1/C68_490_SARS1_raw_data.csv
+
 
 ## Data for `dms-view`:
 Now we write the data in a format for display by [dms-view](https://dms-view.github.io/docs/dataupload) with several different possible mutation-level escape color schemes and also allowing options to visualize directly the deep mutational scanning data.
@@ -402,6 +431,9 @@ for set_name, condition_set in condition_sets.items():
         print(f"Writing `dms-view` input file for {set_name} mapped to PDB {pdb_name} to {csv_file}")
         df.to_csv(csv_file, index=False, float_format='%.4g')
 ```
+
+    Writing `dms-view` input file for C68_490_SARS1 mapped to PDB 6m0j to results/supp_data/SARS1/C68_490_SARS1_6m0j_dms-view_data.csv
+
 
 
 ```python

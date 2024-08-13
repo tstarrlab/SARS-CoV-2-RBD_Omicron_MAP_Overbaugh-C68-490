@@ -40,7 +40,7 @@ C68_490_WH1:
   exclude_sites: []
   site_color_scheme: barnes_serum_epitopes
   color_by_dms: True
-  make_supp_data: False
+  make_supp_data: True
   dmslogo_facet_plot_kwargs:
     height_per_ax: 2.0
   dmslogo_draw_line_kwargs:

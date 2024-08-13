@@ -463,7 +463,7 @@ if len(nan_color):
     bind ranges from -1.95885 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/bind_scalebar_horizontal.pdf
 
 
-    /scratch/local/u6042467/1486035/ipykernel_3290198/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+    /scratch/local/u6042467/1486271/ipykernel_3291896/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
 
 
 
@@ -487,7 +487,7 @@ if len(nan_color):
     expr ranges from -1.24496 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/expr_scalebar_horizontal.pdf
 
 
-    /scratch/local/u6042467/1486035/ipykernel_3290198/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+    /scratch/local/u6042467/1486271/ipykernel_3291896/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
 
 
 
