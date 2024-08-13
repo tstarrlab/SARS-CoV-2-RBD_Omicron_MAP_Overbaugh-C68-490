@@ -331,15 +331,15 @@ strong_sites.to_csv(config['strong_escape_sites_Wuhan_Hu_1'], index=False)
   <tbody>
     <tr>
       <th>default</th>
-      <td>2</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>sensitive</th>
-      <td>2</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>sensitive_max_mut</th>
-      <td>2</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -376,12 +376,12 @@ strong_sites.to_csv(config['strong_escape_sites_Wuhan_Hu_1'], index=False)
       <th>0</th>
       <td>C68_490_53</td>
       <td>378</td>
-      <td>0.2454</td>
+      <td>0.2480</td>
       <td>0.1484</td>
       <td>default</td>
-      <td>0.02391</td>
+      <td>0.0241</td>
       <td>0.5038</td>
-      <td>0.23910</td>
+      <td>0.2410</td>
       <td>True</td>
       <td>0.05038</td>
       <td>True</td>
@@ -389,7 +389,7 @@ strong_sites.to_csv(config['strong_escape_sites_Wuhan_Hu_1'], index=False)
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>2</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>1</th>
@@ -398,9 +398,9 @@ strong_sites.to_csv(config['strong_escape_sites_Wuhan_Hu_1'], index=False)
       <td>0.5038</td>
       <td>0.3743</td>
       <td>default</td>
-      <td>0.02391</td>
+      <td>0.0241</td>
       <td>0.5038</td>
-      <td>0.23910</td>
+      <td>0.2410</td>
       <td>True</td>
       <td>0.05038</td>
       <td>True</td>
@@ -408,37 +408,37 @@ strong_sites.to_csv(config['strong_escape_sites_Wuhan_Hu_1'], index=False)
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>2</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>2</th>
       <td>C68_490_53</td>
-      <td>378</td>
-      <td>0.2454</td>
-      <td>0.1484</td>
-      <td>sensitive</td>
-      <td>0.02391</td>
+      <td>386</td>
+      <td>0.2508</td>
+      <td>0.1831</td>
+      <td>default</td>
+      <td>0.0241</td>
       <td>0.5038</td>
-      <td>0.11955</td>
+      <td>0.2410</td>
       <td>True</td>
-      <td>0.02519</td>
+      <td>0.05038</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>2</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>3</th>
       <td>C68_490_53</td>
-      <td>384</td>
-      <td>0.5038</td>
-      <td>0.3743</td>
+      <td>364</td>
+      <td>0.1274</td>
+      <td>0.1163</td>
       <td>sensitive</td>
-      <td>0.02391</td>
+      <td>0.0241</td>
       <td>0.5038</td>
-      <td>0.11955</td>
+      <td>0.1205</td>
       <td>True</td>
       <td>0.02519</td>
       <td>True</td>
@@ -446,18 +446,18 @@ strong_sites.to_csv(config['strong_escape_sites_Wuhan_Hu_1'], index=False)
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>2</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>4</th>
       <td>C68_490_53</td>
       <td>378</td>
-      <td>0.2454</td>
+      <td>0.2480</td>
       <td>0.1484</td>
-      <td>sensitive_max_mut</td>
-      <td>0.02391</td>
+      <td>sensitive</td>
+      <td>0.0241</td>
       <td>0.5038</td>
-      <td>0.11955</td>
+      <td>0.1205</td>
       <td>True</td>
       <td>0.02519</td>
       <td>True</td>
@@ -465,7 +465,7 @@ strong_sites.to_csv(config['strong_escape_sites_Wuhan_Hu_1'], index=False)
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>2</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>

@@ -35,6 +35,8 @@ from IPython.display import display, HTML
 import pandas as pd
 
 import yaml
+
+%matplotlib inline
 ```
 
 Read the configuration file:

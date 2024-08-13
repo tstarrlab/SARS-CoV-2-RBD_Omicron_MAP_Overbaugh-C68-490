@@ -34,6 +34,8 @@ from plotnine import *
 import pdb_prot_align.colorschemes
 
 import yaml
+
+%matplotlib inline
 ```
 
 Versions of key software:
@@ -338,7 +340,7 @@ if len(nan_color):
     bind ranges from -1.99385 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Wuhan_Hu_1/bind_scalebar_horizontal.pdf
 
 
-    /scratch/local/u1415613/1332293/ipykernel_2286584/578489049.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+    /scratch/local/u6042467/1486039/ipykernel_3290732/578489049.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
 
 
 
@@ -359,10 +361,10 @@ if len(nan_color):
 
     Saving DMS color scheme to results/escape_profiles/Wuhan_Hu_1/escape_profiles_dms_colors.csv
     
-    expr ranges from -0.95352 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Wuhan_Hu_1/expr_scalebar_horizontal.pdf
+    expr ranges from -1.11532 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Wuhan_Hu_1/expr_scalebar_horizontal.pdf
 
 
-    /scratch/local/u1415613/1332293/ipykernel_2286584/578489049.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+    /scratch/local/u6042467/1486039/ipykernel_3290732/578489049.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
 
 
 
@@ -372,7 +374,7 @@ if len(nan_color):
 
 
     
-    expr ranges from -0.95352 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Wuhan_Hu_1/expr_scalebar_vertical.pdf
+    expr ranges from -1.11532 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Wuhan_Hu_1/expr_scalebar_vertical.pdf
 
 
 

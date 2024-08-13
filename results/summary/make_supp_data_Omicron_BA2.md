@@ -22,6 +22,8 @@ import pandas as pd
 from plotnine import *
 
 import yaml
+
+%matplotlib inline
 ```
 
 Read the configuration file:

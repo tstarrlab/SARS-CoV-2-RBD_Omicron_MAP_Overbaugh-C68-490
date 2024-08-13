@@ -331,15 +331,15 @@ strong_sites.to_csv(config['strong_escape_sites_SARS1'], index=False)
   <tbody>
     <tr>
       <th>default</th>
-      <td>3</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>sensitive</th>
-      <td>3</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>sensitive_max_mut</th>
-      <td>3</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -376,20 +376,20 @@ strong_sites.to_csv(config['strong_escape_sites_SARS1'], index=False)
       <th>0</th>
       <td>C68_490_27</td>
       <td>378</td>
-      <td>0.4254</td>
+      <td>0.4279</td>
       <td>0.2042</td>
       <td>default</td>
-      <td>0.03836</td>
-      <td>0.643</td>
-      <td>0.3836</td>
+      <td>0.03979</td>
+      <td>0.8316</td>
+      <td>0.39790</td>
       <td>True</td>
-      <td>0.06430</td>
+      <td>0.08316</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>3</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>1</th>
@@ -398,17 +398,17 @@ strong_sites.to_csv(config['strong_escape_sites_SARS1'], index=False)
       <td>0.4803</td>
       <td>0.3709</td>
       <td>default</td>
-      <td>0.03836</td>
-      <td>0.643</td>
-      <td>0.3836</td>
+      <td>0.03979</td>
+      <td>0.8316</td>
+      <td>0.39790</td>
       <td>True</td>
-      <td>0.06430</td>
+      <td>0.08316</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>3</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>2</th>
@@ -417,55 +417,55 @@ strong_sites.to_csv(config['strong_escape_sites_SARS1'], index=False)
       <td>0.6430</td>
       <td>0.3493</td>
       <td>default</td>
-      <td>0.03836</td>
-      <td>0.643</td>
-      <td>0.3836</td>
+      <td>0.03979</td>
+      <td>0.8316</td>
+      <td>0.39790</td>
       <td>True</td>
-      <td>0.06430</td>
+      <td>0.08316</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>3</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>3</th>
       <td>C68_490_27</td>
-      <td>378</td>
-      <td>0.4254</td>
-      <td>0.2042</td>
-      <td>sensitive</td>
-      <td>0.03836</td>
-      <td>0.643</td>
-      <td>0.1918</td>
+      <td>387</td>
+      <td>0.8316</td>
+      <td>0.3920</td>
+      <td>default</td>
+      <td>0.03979</td>
+      <td>0.8316</td>
+      <td>0.39790</td>
       <td>True</td>
-      <td>0.03215</td>
+      <td>0.08316</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>3</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>4</th>
       <td>C68_490_27</td>
-      <td>383</td>
-      <td>0.4803</td>
-      <td>0.3709</td>
+      <td>378</td>
+      <td>0.4279</td>
+      <td>0.2042</td>
       <td>sensitive</td>
-      <td>0.03836</td>
-      <td>0.643</td>
-      <td>0.1918</td>
+      <td>0.03979</td>
+      <td>0.8316</td>
+      <td>0.19895</td>
       <td>True</td>
-      <td>0.03215</td>
+      <td>0.04158</td>
       <td>True</td>
       <td>0</td>
       <td>True</td>
       <td>False</td>
       <td>True</td>
-      <td>3</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>

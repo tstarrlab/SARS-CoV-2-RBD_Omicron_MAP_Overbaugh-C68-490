@@ -1004,7 +1004,7 @@ print('Here is what that dataframe looks like:')
 display(HTML(mut_bind_expr.query("position > 480 & position < 490").to_html(index=False)))
 ```
 
-    Reading ACE2-binding and expression for mutations from results/prior_DMS_data/mutant_ACE2binding_expression_SARSr.csv, and filtering for variants that have single mutations that only have mutations with binding >=-2.0 and expression >=-0.95489.
+    Reading ACE2-binding and expression for mutations from results/prior_DMS_data/mutant_ACE2binding_expression_SARSr.csv, and filtering for variants that have single mutations that only have mutations with binding >=-2.0 and expression >=-1.25.
     Here is what that dataframe looks like:
 
 
@@ -6677,7 +6677,7 @@ display(HTML(escape_scores.query('not pass_ACE2bind_expr_filter & variant_class 
 ```
 
     3441 of 4000 mutations have adequate bind.
-    3169 of 4000 mutations have adequate expr.
+    3287 of 4000 mutations have adequate expr.
 
 
 
@@ -6845,7 +6845,7 @@ else:
 ```
 
     Here are the number of mutations that pass the bind, express, and disulfide filters:
-    2953
+    3001
     There are these many possible mutations (excluding wildtype and disulfides!):
     3648
 
@@ -7132,7 +7132,7 @@ print(f"Read {len(escape_scores_primary)} scores.")
 </table>
 
 
-    Read 51677 scores.
+    Read 53596 scores.
 
 
 ### Count number of barcodes per mutation and remove variants with >1 amino acid substitution
@@ -7280,16 +7280,17 @@ else:
 ```
 
     Excluding mutations where the wildtype identity is a cysteine
-    Specifically, excluding: ['C150A' 'C150D' 'C150E' 'C150G' 'C150H' 'C150K' 'C150N' 'C150Q' 'C150S'
-     'C150T' 'C150V' 'C157A' 'C157K' 'C157S' 'C157T' 'C157W' 'C194A' 'C194D'
-     'C194E' 'C194F' 'C194G' 'C194I' 'C194L' 'C194M' 'C194N' 'C194P' 'C194Q'
-     'C194R' 'C194S' 'C194T' 'C194V' 'C194W' 'C194Y' 'C31A' 'C31D' 'C31E'
-     'C31F' 'C31G' 'C31H' 'C31I' 'C31K' 'C31L' 'C31M' 'C31N' 'C31P' 'C31Q'
-     'C31R' 'C31S' 'C31T' 'C31V' 'C31W' 'C31Y' 'C61A' 'C61D' 'C61E' 'C61F'
-     'C61G' 'C61H' 'C61I' 'C61K' 'C61L' 'C61M' 'C61N' 'C61P' 'C61R' 'C61S'
-     'C61T' 'C61V' 'C61W' 'C61Y' 'C6A' 'C6D' 'C6E' 'C6F' 'C6G' 'C6H' 'C6I'
-     'C6K' 'C6L' 'C6M' 'C6N' 'C6P' 'C6Q' 'C6R' 'C6S' 'C6T' 'C6V' 'C6W' 'C6Y'
-     'C194H' 'C61Q']
+    Specifically, excluding: ['C102I' 'C150A' 'C150D' 'C150E' 'C150G' 'C150H' 'C150I' 'C150K' 'C150L'
+     'C150M' 'C150N' 'C150P' 'C150Q' 'C150R' 'C150S' 'C150T' 'C150V' 'C150Y'
+     'C157A' 'C157E' 'C157H' 'C157K' 'C157M' 'C157N' 'C157Q' 'C157S' 'C157T'
+     'C157V' 'C157W' 'C157Y' 'C194A' 'C194D' 'C194E' 'C194F' 'C194G' 'C194I'
+     'C194K' 'C194L' 'C194M' 'C194N' 'C194P' 'C194Q' 'C194R' 'C194S' 'C194T'
+     'C194V' 'C194W' 'C194Y' 'C31A' 'C31D' 'C31E' 'C31F' 'C31G' 'C31H' 'C31I'
+     'C31K' 'C31L' 'C31M' 'C31N' 'C31P' 'C31Q' 'C31R' 'C31S' 'C31T' 'C31V'
+     'C31W' 'C31Y' 'C61A' 'C61D' 'C61E' 'C61F' 'C61G' 'C61H' 'C61I' 'C61K'
+     'C61L' 'C61M' 'C61N' 'C61P' 'C61R' 'C61S' 'C61T' 'C61V' 'C61W' 'C61Y'
+     'C6A' 'C6D' 'C6E' 'C6F' 'C6G' 'C6H' 'C6I' 'C6K' 'C6L' 'C6M' 'C6N' 'C6P'
+     'C6Q' 'C6R' 'C6S' 'C6T' 'C6V' 'C6W' 'C6Y' 'C194H' 'C61Q']
 
 
 We need to compute the escape scores (calculated as [here](https://jbloomlab.github.io/dms_variants/dms_variants.codonvarianttable.html?highlight=escape_scores#dms_variants.codonvarianttable.CodonVariantTable.escape_scores)) back to escape fractions. We define a function to do this depending on the score type:
@@ -7355,8 +7356,8 @@ print(len(effects_df.query('nlibs==1')))
 ```
 
     Only taking average of mutations with escape fractions in >=2 libraries or with >=2 single-mutant measurements total.
-    2322
-    5272
+    2398
+    5448
 
 
 Plot the correlations of the escape fractions among the two libraries for all selections performed on both libraries. 

@@ -34,6 +34,8 @@ from plotnine import *
 import pdb_prot_align.colorschemes
 
 import yaml
+
+%matplotlib inline
 ```
 
 Versions of key software:
@@ -338,7 +340,7 @@ if len(nan_color):
     bind ranges from -1.998 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Omicron_BA2/bind_scalebar_horizontal.pdf
 
 
-    /scratch/local/u1415613/1044005/ipykernel_2640606/3576878265.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+    /scratch/local/u6042467/1485990/ipykernel_3288546/3576878265.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
 
 
 
@@ -362,7 +364,7 @@ if len(nan_color):
     expr ranges from -0.95429 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/Omicron_BA2/expr_scalebar_horizontal.pdf
 
 
-    /scratch/local/u1415613/1044005/ipykernel_2640606/3576878265.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+    /scratch/local/u6042467/1485990/ipykernel_3288546/3576878265.py:38: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
 
 
 

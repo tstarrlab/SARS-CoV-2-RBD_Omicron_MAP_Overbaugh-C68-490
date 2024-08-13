@@ -463,7 +463,7 @@ if len(nan_color):
     bind ranges from -1.95885 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/bind_scalebar_horizontal.pdf
 
 
-    /scratch/local/u1415613/1332292/ipykernel_800015/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+    /scratch/local/u6042467/1486035/ipykernel_3290198/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
 
 
 
@@ -484,10 +484,10 @@ if len(nan_color):
 
     Saving DMS color scheme to results/escape_profiles/SARS1/escape_profiles_dms_colors.csv
     
-    expr ranges from -0.95363 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/expr_scalebar_horizontal.pdf
+    expr ranges from -1.24496 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/expr_scalebar_horizontal.pdf
 
 
-    /scratch/local/u1415613/1332292/ipykernel_800015/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+    /scratch/local/u6042467/1486035/ipykernel_3290198/713296460.py:43: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
 
 
 
@@ -497,7 +497,7 @@ if len(nan_color):
 
 
     
-    expr ranges from -0.95363 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/expr_scalebar_vertical.pdf
+    expr ranges from -1.24496 to 0.0, here is the scale bar, which is being saved to results/escape_profiles/SARS1/expr_scalebar_vertical.pdf
 
 
 
@@ -781,13 +781,6 @@ with multiprocessing.Pool(ncpus) as pool:
 ```
 
     Drawing 3 profiles using 16 CPUs...
-
-
-    /uufs/chpc.utah.edu/common/home/starr-group1/software/pkg/miniconda3/envs/StarrLab1/lib/python3.8/site-packages/dmslogo/facet.py:196: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
-    /uufs/chpc.utah.edu/common/home/starr-group1/software/pkg/miniconda3/envs/StarrLab1/lib/python3.8/site-packages/dmslogo/facet.py:196: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
-    /uufs/chpc.utah.edu/common/home/starr-group1/software/pkg/miniconda3/envs/StarrLab1/lib/python3.8/site-packages/dmslogo/facet.py:196: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all axes decorations.
-
-
     
     Plotted profile 1 to:
      results/escape_profiles/SARS1/C68_490_SARS1_stackedlogo.pdf
@@ -796,7 +789,7 @@ with multiprocessing.Pool(ncpus) as pool:
 
 
     
-![png](escape_profiles_SARS1_files/escape_profiles_SARS1_27_3.png)
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_27_1.png)
     
 
 
@@ -808,7 +801,7 @@ with multiprocessing.Pool(ncpus) as pool:
 
 
     
-![png](escape_profiles_SARS1_files/escape_profiles_SARS1_27_5.png)
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_27_3.png)
     
 
 
@@ -820,7 +813,7 @@ with multiprocessing.Pool(ncpus) as pool:
 
 
     
-![png](escape_profiles_SARS1_files/escape_profiles_SARS1_27_7.png)
+![png](escape_profiles_SARS1_files/escape_profiles_SARS1_27_5.png)
     
 
 

@@ -996,7 +996,7 @@ print('Here is what that dataframe looks like:')
 display(HTML(mut_bind_expr.query('delta_bind > -2.5').head().to_html(index=False)))
 ```
 
-    Reading ACE2-binding and expression for mutations from results/prior_DMS_data/mutant_ACE2binding_expression.csv, and filtering for variants that have single mutations that only have mutations with binding >=-2.0 and expression >=-0.95489.
+    Reading ACE2-binding and expression for mutations from results/prior_DMS_data/mutant_ACE2binding_expression.csv, and filtering for variants that have single mutations that only have mutations with binding >=-2.0 and expression >=-1.116.
     Here is what that dataframe looks like:
 
 
@@ -1166,7 +1166,7 @@ display(HTML(escape_scores.query('not pass_ACE2bind_expr_filter & variant_class 
 ```
 
     3156 of 4020 mutations have adequate bind.
-    2888 of 4020 mutations have adequate expr.
+    2984 of 4020 mutations have adequate expr.
 
 
 
@@ -1334,7 +1334,7 @@ else:
 ```
 
     Here are the number of mutations that pass the bind, express, and disulfide filters:
-    2535
+    2614
     There are these many possible mutations (excluding wildtype and disulfides!):
     3667
 
@@ -1621,7 +1621,7 @@ print(f"Read {len(escape_scores_primary)} scores.")
 </table>
 
 
-    Read 58224 scores.
+    Read 59623 scores.
 
 
 ### Count number of barcodes per mutation and remove variants with >1 amino acid substitution
@@ -1704,7 +1704,23 @@ display(HTML(effects_df.head().to_html()))
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
+      <th>0</th>
+      <td>C68_490_53</td>
+      <td>lib12</td>
+      <td>A105C</td>
+      <td>0.000193</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C68_490_53</td>
+      <td>lib12</td>
+      <td>A105I</td>
+      <td>0.000159</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>C68_490_53</td>
       <td>lib12</td>
       <td>A105M</td>
@@ -1712,7 +1728,7 @@ display(HTML(effects_df.head().to_html()))
       <td>2</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>4</th>
       <td>C68_490_53</td>
       <td>lib12</td>
       <td>A105S</td>
@@ -1720,28 +1736,12 @@ display(HTML(effects_df.head().to_html()))
       <td>6</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>5</th>
       <td>C68_490_53</td>
       <td>lib12</td>
       <td>A105T</td>
       <td>0.000232</td>
       <td>4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>C68_490_53</td>
-      <td>lib12</td>
-      <td>A105W</td>
-      <td>0.000116</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>C68_490_53</td>
-      <td>lib12</td>
-      <td>A145C</td>
-      <td>0.000231</td>
-      <td>3</td>
     </tr>
   </tbody>
 </table>
@@ -1772,10 +1772,10 @@ else:
     Specifically, excluding: ['C195A' 'C195D' 'C195E' 'C195F' 'C195H' 'C195I' 'C195K' 'C195L' 'C195M'
      'C195P' 'C195R' 'C195S' 'C195T' 'C195V' 'C195W' 'C195Y' 'C31E' 'C31F'
      'C31G' 'C31H' 'C31I' 'C31K' 'C31L' 'C31P' 'C31Q' 'C31R' 'C31S' 'C31T'
-     'C31V' 'C31W' 'C61A' 'C61D' 'C61E' 'C61F' 'C61G' 'C61H' 'C61I' 'C61K'
-     'C61L' 'C61M' 'C61N' 'C61P' 'C61Q' 'C61R' 'C61S' 'C61T' 'C61V' 'C61W'
-     'C61Y' 'C6D' 'C6F' 'C6G' 'C6H' 'C6N' 'C6S' 'C6V' 'C6Y' 'C195G' 'C195N'
-     'C31A' 'C31D' 'C31M' 'C31N' 'C6T']
+     'C31V' 'C31W' 'C49W' 'C61A' 'C61D' 'C61E' 'C61F' 'C61G' 'C61H' 'C61I'
+     'C61K' 'C61L' 'C61M' 'C61N' 'C61P' 'C61Q' 'C61R' 'C61S' 'C61T' 'C61V'
+     'C61W' 'C61Y' 'C6A' 'C6D' 'C6E' 'C6F' 'C6G' 'C6H' 'C6M' 'C6N' 'C6S' 'C6V'
+     'C6W' 'C6Y' 'C195G' 'C195N' 'C31A' 'C31D' 'C31M' 'C31N' 'C6T']
 
 
 We need to compute the escape scores (calculated as [here](https://jbloomlab.github.io/dms_variants/dms_variants.codonvarianttable.html?highlight=escape_scores#dms_variants.codonvarianttable.CodonVariantTable.escape_scores)) back to escape fractions. We define a function to do this depending on the score type:
@@ -1841,8 +1841,8 @@ print(len(effects_df.query('nlibs==1')))
 ```
 
     Only taking average of mutations with escape fractions in >=2 libraries or with >=2 single-mutant measurements total.
-    1695
-    4476
+    1758
+    4628
 
 
 Plot the correlations of the escape fractions among the two libraries for all selections performed on both libraries. 

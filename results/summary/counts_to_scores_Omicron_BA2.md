@@ -32,6 +32,8 @@ from plotnine import *
 import seaborn
 
 import yaml
+
+%matplotlib inline
 ```
 
 Set [plotnine](https://github.com/has2k1/plotnine) theme to the gray-grid one defined in [dms_variants](https://jbloomlab.github.io/dms_variants):
@@ -241,6 +243,12 @@ p = variants.plotMutFreqs(variant_type='all',
 _ = p.draw()
 ```
 
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_29_0.png)
+    
+
+
 How many mutations are observed frequently in pre-selection libraries?
 Note that the libraries have been pre-selected for ACE2 binding, so we expect stop variants to mostly be missing.
 Make the plot both for all variants and just single-mutant variants:
@@ -261,6 +269,18 @@ for variant_type in ['all', 'single']:
    _ = p.draw()
 ```
 
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_31_0.png)
+    
+
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_31_1.png)
+    
+
+
 Now make a plot showing what number and fraction of counts are for each variant in each pre-selection sample / library.
 If some variants constitute a very high fraction, then that indicates extensive bottlenecking:
 
@@ -275,6 +295,18 @@ for ystat in ['frac_counts', 'count']:
                                       )
     _ = p.draw()
 ```
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_33_0.png)
+    
+
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_33_1.png)
+    
+
 
 Now make the same plot breaking down by variant class, which enables determination of which types of variants are at high and low frequencies.
 For this plot (unlike one above not classified by category) we only show variants of the primary target (not the homologs), and also group synonymous with wildtype in order to reduce number of plotted categories to make more interpretable:
@@ -293,6 +325,18 @@ for ystat in ['frac_counts', 'count']:
                                       )
     _ = p.draw()
 ```
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_35_0.png)
+    
+
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_35_1.png)
+    
+
 
 We also directly look to see what is the variant in each reference library / sample with the highest fraction counts.
 Knowing if the highest frequency variant is shared helps determine **where** in the experiment the jackpotting happened:
@@ -387,48 +431,6 @@ for lib, lib_df in frac_counts_per_variant.groupby('library'):
 
     
 ![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_39_1.png)
-    
-
-
-
-    
-![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_39_2.png)
-    
-
-
-
-    
-![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_39_3.png)
-    
-
-
-
-    
-![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_39_4.png)
-    
-
-
-
-    
-![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_39_5.png)
-    
-
-
-
-    
-![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_39_6.png)
-    
-
-
-
-    
-![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_39_7.png)
-    
-
-
-
-    
-![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_39_8.png)
     
 
 
@@ -552,6 +554,12 @@ p = (ggplot(counts_by_class
 
 _ = p.draw()
 ```
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_43_0.png)
+    
+
 
 ## Compute escape scores
 We use the escape score metric, which does **not** involve normalizing to wildtype and so isn't strongly affected by low wildtype counts.
@@ -1374,6 +1382,12 @@ p = (ggplot(frac_ACE2bind_expr_pass_filter) +
 _ = p.draw()
 ```
 
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_58_0.png)
+    
+
+
 ## Examine and write escape scores
 Plot the distribution of escape scores across variants of different classes **among those that pass both the pre-selection count filter and the ACE2-binding / expression filter**.
 If things are working correctly, we don't expect escape in wildtype (or synonymous variants), but do expect escape for some small fraction of nonsynymous variants.
@@ -1405,6 +1419,12 @@ p = (ggplot(df) +
 _ = p.draw()
 ```
 
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_60_0.png)
+    
+
+
 Also, we want to see how much the high escape scores are correlated with simple coverage.
 To do this, we plot the correlation between escape score and pre-selection count just for the nonsynonymous variants (which are the ones that we expect to have true escape).
 The plots below have a lot of overplotting, but are still sufficient to test of the score is simply correlated with the pre-selection counts or not.
@@ -1430,6 +1450,12 @@ p = (ggplot(escape_scores
 
 _ = p.draw()
 ```
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_62_0.png)
+    
+
 
 Write the escape scores to a file:
 
@@ -1620,6 +1646,12 @@ p = (ggplot(escape_scores_primary) +
 
 _ = p.draw()
 ```
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_68_0.png)
+    
+
 
 ### Filter dataframe on single mutations that are present in at least `n` number of variants (specified in `config.yaml` file)
 Now see how many `n_single_mut_measurements` there are for each variant:
@@ -1884,6 +1916,12 @@ p = (ggplot(effects_df_wide) +
 _ = p.draw()
 ```
 
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_78_0.png)
+    
+
+
 ### Escape at site level
 The above analysis estimates the effects of mutations. We also compute escape statistics at the site level. First, add sites to the data frame of mutational effects:
 
@@ -2038,6 +2076,18 @@ for val in ['site_avg_escape_frac_single_mut', 'site_total_escape_frac_single_mu
 
     _ = p.draw()
 ```
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_84_0.png)
+    
+
+
+
+    
+![png](counts_to_scores_Omicron_BA2_files/counts_to_scores_Omicron_BA2_84_1.png)
+    
+
 
 ## Write file with escape fractions at mutation and site levels
 We write a files that has the mutation- and site-level escape fractions. This file has both the separate measurements for each library plus the average across libraries for all mutations measured in both libraries. We name the columns in such a way that this file can be used as [dms-view data file](https://dms-view.github.io/docs/dataupload):
